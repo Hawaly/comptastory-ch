@@ -12,7 +12,7 @@ const BUCKET_NAME = 'documents';
  * Only use local storage in development (localhost)
  * ALWAYS use Supabase Storage in production/Vercel
  */
-function useLocalStorage(): boolean {
+function shouldUseLocalStorage(): boolean {
   // Only use local storage if explicitly in development
   const isDev = process.env.NODE_ENV === 'development';
   
@@ -92,7 +92,7 @@ export async function saveContract(
   const fileName = `${contractNumber}.pdf`;
   const filePath = `contracts/${year}/${fileName}`;
 
-  if (useLocalStorage()) {
+  if (shouldUseLocalStorage()) {
     // Local development: use local file system
     const { saveContractLocally } = await import('./localStorageHelpers');
     return saveContractLocally(contractNumber, pdfBuffer);
@@ -113,7 +113,7 @@ export async function saveInvoice(
   const fileName = `${invoiceNumber}.pdf`;
   const filePath = `invoices/${year}/${fileName}`;
 
-  if (useLocalStorage()) {
+  if (shouldUseLocalStorage()) {
     // Local development: use local file system
     const { saveInvoiceLocally } = await import('./localStorageHelpers');
     return saveInvoiceLocally(invoiceNumber, pdfBuffer);
@@ -135,7 +135,7 @@ export async function saveQrBill(
   const fileName = `QR-${invoiceNumber}.pdf`;
   const filePath = `qr-bills/${year}/${fileName}`;
 
-  if (useLocalStorage()) {
+  if (shouldUseLocalStorage()) {
     // Local development: use local file system
     const { saveQrBillLocally } = await import('./localStorageHelpers');
     return saveQrBillLocally(invoiceNumber, pdfBuffer, oldQrBillPath);
@@ -169,7 +169,7 @@ export async function saveReceipt(
       ? `image/${ext.toLowerCase()}` 
       : 'application/octet-stream';
 
-  if (useLocalStorage()) {
+  if (shouldUseLocalStorage()) {
     // Local development: use local file system
     const { saveReceiptLocally } = await import('./localStorageHelpers');
     return saveReceiptLocally(fileBuffer, originalName);
@@ -185,7 +185,7 @@ export async function saveReceipt(
 export async function deleteQrBill(qrBillPath: string | null | undefined): Promise<void> {
   if (!qrBillPath) return;
 
-  if (useLocalStorage()) {
+  if (shouldUseLocalStorage()) {
     const { deleteQrBillLocally } = await import('./localStorageHelpers');
     deleteQrBillLocally(qrBillPath);
   } else {
@@ -209,7 +209,7 @@ export async function getDownloadUrl(filePath: string): Promise<string> {
 
   // If it's a local path (/uploads/...), check environment
   if (filePath.startsWith('/uploads/')) {
-    if (useLocalStorage()) {
+    if (shouldUseLocalStorage()) {
       // Local: return as-is (served from public folder)
       return filePath;
     } else {
@@ -221,7 +221,7 @@ export async function getDownloadUrl(filePath: string): Promise<string> {
   }
 
   // Assume it's a Supabase path - get signed URL in production
-  if (!useLocalStorage()) {
+  if (!shouldUseLocalStorage()) {
     return await getSignedUrl(filePath);
   }
   

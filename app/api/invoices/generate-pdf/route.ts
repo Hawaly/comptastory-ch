@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
 import { generateInvoicePDF } from '@/lib/invoicePdfGenerator';
-import { saveInvoice } from '@/lib/storageHelpers';
 import { getCompanySettings } from '@/lib/companySettings';
 import { Client, Mandat, Invoice, InvoiceItem } from '@/types/database';
+
+const BUCKET_NAME = 'documents';
 
 export async function POST(request: NextRequest) {
   try {
@@ -61,13 +62,31 @@ export async function POST(request: NextRequest) {
       companySettings,
     });
 
-    // Sauvegarder le PDF (Supabase Storage sur Vercel, local en dev)
-    const filePath = await saveInvoice(invoice.invoice_number, pdfBytes);
+    // Sauvegarder le PDF directement dans Supabase Storage
+    const year = new Date().getFullYear().toString();
+    const fileName = `${invoice.invoice_number}.pdf`;
+    const storagePath = `invoices/${year}/${fileName}`;
+    
+    console.log('[PDF Generation] Uploading to Supabase Storage:', storagePath);
+    
+    const { error: uploadError } = await supabase.storage
+      .from(BUCKET_NAME)
+      .upload(storagePath, pdfBytes, {
+        contentType: 'application/pdf',
+        upsert: true,
+      });
+
+    if (uploadError) {
+      console.error('[PDF Generation] Upload error:', uploadError);
+      throw new Error(`Erreur upload Supabase: ${uploadError.message}`);
+    }
+    
+    console.log('[PDF Generation] Upload successful:', storagePath);
 
     // Mettre à jour la facture avec le chemin du PDF
     const { error: updateError } = await supabase
       .from('invoice')
-      .update({ pdf_path: filePath })
+      .update({ pdf_path: storagePath })
       .eq('id', invoice_id);
 
     if (updateError) {
@@ -76,7 +95,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      pdf_path: filePath,
+      pdf_path: storagePath,
       message: 'PDF généré avec succès',
     });
 
