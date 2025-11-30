@@ -8,10 +8,29 @@ import { supabase } from './supabaseClient';
 const BUCKET_NAME = 'documents';
 
 /**
- * Check if we're running on Vercel (serverless)
+ * Check if we're running on Vercel (serverless) or any read-only environment
+ * On Vercel, we MUST use Supabase Storage since the file system is read-only
  */
 function isServerless(): boolean {
-  return process.env.VERCEL === '1' || process.env.VERCEL_ENV !== undefined;
+  // Multiple ways to detect Vercel environment
+  const isVercel = 
+    process.env.VERCEL === '1' || 
+    process.env.VERCEL_ENV !== undefined ||
+    process.env.VERCEL_URL !== undefined ||
+    process.env.NEXT_PUBLIC_VERCEL_URL !== undefined;
+  
+  // Also check if we're in a read-only environment (Lambda, etc.)
+  const isReadOnlyFs = process.cwd().startsWith('/var/task');
+  
+  console.log('[Storage] Environment check:', { 
+    isVercel, 
+    isReadOnlyFs, 
+    cwd: process.cwd(),
+    VERCEL: process.env.VERCEL,
+    VERCEL_ENV: process.env.VERCEL_ENV 
+  });
+  
+  return isVercel || isReadOnlyFs;
 }
 
 /**
