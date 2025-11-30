@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
+import { getDownloadUrl } from '@/lib/storageHelpers';
 
 export async function GET(
   request: NextRequest,
@@ -21,23 +22,10 @@ export async function GET(
       );
     }
 
-    // Si le chemin commence par /uploads, c'est un fichier local
-    if (invoice.pdf_path.startsWith('/uploads')) {
-      // Rediriger vers le fichier local
-      const fullUrl = new URL(invoice.pdf_path, request.url);
-      return NextResponse.redirect(fullUrl);
-    }
-
-    // Sinon, c'est dans Supabase Storage (pour migration future)
-    const { data } = await supabase.storage
-      .from('contracts')
-      .createSignedUrl(invoice.pdf_path, 3600);
-
-    if (!data?.signedUrl) {
-      throw new Error('Impossible de générer l\'URL de téléchargement');
-    }
-
-    return NextResponse.redirect(data.signedUrl);
+    // Get the download URL (signed URL for Supabase, local path for dev)
+    const downloadUrl = await getDownloadUrl(invoice.pdf_path);
+    
+    return NextResponse.redirect(downloadUrl);
 
   } catch (error: unknown) {
     const err = error as Error;

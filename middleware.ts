@@ -3,10 +3,10 @@ import type { NextRequest } from 'next/server';
 import { verifyToken, SESSION_COOKIE_NAME } from '@/lib/auth';
 
 // Routes publiques (accessibles sans authentification)
-const PUBLIC_ROUTES = ['/login'];
+const PUBLIC_ROUTES = ['/login', '/hash-password'];
 
 // Routes API publiques
-const PUBLIC_API_ROUTES = ['/api/login'];
+const PUBLIC_API_ROUTES = ['/api/login', '/api/hash-password'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

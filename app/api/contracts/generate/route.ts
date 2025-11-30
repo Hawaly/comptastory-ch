@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
 import { generateContractNumber } from '@/lib/contractHelpers';
 import { generateContractPDF } from '@/lib/pdfGenerator';
-import { saveContractLocally } from '@/lib/localStorageHelpers';
+import { saveContract } from '@/lib/storageHelpers';
 import { getCompanySettings } from '@/lib/companySettings';
 import { Client, Mandat } from '@/types/database';
 
@@ -68,8 +68,8 @@ export async function POST(request: NextRequest) {
       companySettings,
     });
 
-    // Sauvegarder localement (solution temporaire)
-    const filePath = saveContractLocally(contractNumber, pdfBuffer);
+    // Sauvegarder le PDF (Supabase Storage sur Vercel, local en dev)
+    const filePath = await saveContract(contractNumber, pdfBuffer);
 
     // Insérer l'enregistrement dans la table contrat
     const { data: contrat, error: insertError } = await supabase

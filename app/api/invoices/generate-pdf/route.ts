@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
 import { generateInvoicePDF } from '@/lib/invoicePdfGenerator';
-import { saveInvoiceLocally } from '@/lib/localStorageHelpers';
+import { saveInvoice } from '@/lib/storageHelpers';
 import { getCompanySettings } from '@/lib/companySettings';
 import { Client, Mandat, Invoice, InvoiceItem } from '@/types/database';
 
@@ -61,8 +61,8 @@ export async function POST(request: NextRequest) {
       companySettings,
     });
 
-    // Sauvegarder localement (solution temporaire)
-    const filePath = saveInvoiceLocally(invoice.invoice_number, pdfBytes);
+    // Sauvegarder le PDF (Supabase Storage sur Vercel, local en dev)
+    const filePath = await saveInvoice(invoice.invoice_number, pdfBytes);
 
     // Mettre à jour la facture avec le chemin du PDF
     const { error: updateError } = await supabase

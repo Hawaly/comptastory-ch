@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
 import { generateSwissQrBill } from '@/lib/qrBillGenerator';
-import { saveQrBillLocally } from '@/lib/localStorageHelpers';
+import { saveQrBill } from '@/lib/storageHelpers';
 import { Client, Invoice, CompanySettings } from '@/types/database';
 
 export async function GET(
@@ -118,7 +118,7 @@ export async function GET(
       console.log('  Aucun ancien chemin trouvé dans la DB');
     }
     
-    const qrBillPath = saveQrBillLocally(
+    const qrBillPath = await saveQrBill(
       invoice.invoice_number,
       pdfBuffer,
       oldQrBillPath
