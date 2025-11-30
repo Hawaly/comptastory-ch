@@ -36,11 +36,11 @@ export function Header({ title, subtitle }: HeaderProps) {
       <div className="flex items-center gap-2 sm:gap-3">
         {/* Search Bar - caché sur mobile, visible sur tablette+ */}
         <div className="relative group hidden md:block">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-orange-500 transition-colors" />
           <input
             type="text"
             placeholder="Rechercher..."
-            className="pl-11 pr-4 py-2.5 w-48 lg:w-72 bg-slate-50/80 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white transition-all duration-200"
+            className="pl-11 pr-4 py-2.5 w-48 lg:w-72 bg-slate-50/80 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 focus:bg-white transition-all duration-200"
           />
           <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden group-focus-within:flex items-center gap-1">
             <kbd className="px-1.5 py-0.5 text-xs bg-slate-200 text-slate-600 rounded font-medium">⌘</kbd>
@@ -62,7 +62,7 @@ export function Header({ title, subtitle }: HeaderProps) {
 
         {/* User Quick Menu - caché sur mobile */}
         <div className="hidden sm:flex items-center gap-3 pl-3 border-l border-slate-200">
-          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 cursor-pointer hover:shadow-indigo-500/40 transition-all duration-200">
+          <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/20 cursor-pointer hover:shadow-orange-500/40 transition-all duration-200">
             <span className="text-sm font-bold text-white">A</span>
           </div>
         </div>

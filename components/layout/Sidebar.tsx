@@ -18,11 +18,11 @@ import {
 } from "lucide-react";
 
 const menuItems = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, color: "from-violet-500 to-purple-500" },
-  { href: "/clients", label: "Clients", icon: Users, color: "from-blue-500 to-cyan-500" },
-  { href: "/mandats", label: "Mandats", icon: Briefcase, color: "from-amber-500 to-orange-500" },
-  { href: "/factures", label: "Factures", icon: FileText, color: "from-emerald-500 to-teal-500" },
-  { href: "/depenses", label: "Dépenses", icon: Receipt, color: "from-rose-500 to-pink-500" },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, color: "from-orange-500 to-orange-600" },
+  { href: "/clients", label: "Clients", icon: Users, color: "from-orange-500 to-orange-600" },
+  { href: "/mandats", label: "Mandats", icon: Briefcase, color: "from-orange-500 to-orange-600" },
+  { href: "/factures", label: "Factures", icon: FileText, color: "from-orange-500 to-orange-600" },
+  { href: "/depenses", label: "Dépenses", icon: Receipt, color: "from-orange-500 to-orange-600" },
   { href: "/settings", label: "Paramètres", icon: Settings, color: "from-slate-500 to-slate-600" },
 ];
 
@@ -85,10 +85,14 @@ export function Sidebar() {
       <div className="p-6">
         <Link href="/dashboard" className="flex items-center gap-3 group">
           <div className="relative">
-            <div className="w-11 h-11 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-300">
-              YS
+            <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:shadow-orange-500/50 transition-all duration-300 p-1.5">
+              <img 
+                src="/images/urstory_black.png" 
+                alt="YourStory Logo" 
+                className="w-8 h-8 object-contain"
+              />
             </div>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-900 animate-pulse" />
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-400 rounded-full border-2 border-slate-900 animate-pulse" />
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
@@ -147,9 +151,9 @@ export function Sidebar() {
 
       {/* Quick Stats */}
       <div className="px-4 py-3">
-        <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl p-4 border border-white/5">
+        <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl p-4 border border-white/5">
           <div className="flex items-center gap-2 mb-2">
-            <Sparkles className="w-4 h-4 text-indigo-400" />
+            <Sparkles className="w-4 h-4 text-orange-400" />
             <span className="text-xs font-semibold text-slate-300">Activité du jour</span>
           </div>
           <div className="flex items-baseline gap-1">
@@ -163,10 +167,10 @@ export function Sidebar() {
       <div className="p-4 border-t border-slate-700/50">
         <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-800/50 mb-3">
           <div className="relative">
-            <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-sm font-bold text-white">A</span>
             </div>
-            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-800" />
+            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-orange-400 rounded-full border-2 border-slate-800" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-white truncate">Admin</p>
