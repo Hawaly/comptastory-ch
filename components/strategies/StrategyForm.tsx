@@ -244,13 +244,13 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
     <button
       type="button"
       onClick={() => toggleSection(section)}
-      className="flex items-center justify-between w-full p-4 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+      className="flex items-center justify-between w-full p-3 sm:p-4 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
     >
-      <h3 className="text-lg font-bold text-gray-900">{title}</h3>
+      <h3 className="text-base sm:text-lg font-bold text-gray-900">{title}</h3>
       {expandedSections[section] ? (
-        <ChevronUp className="w-5 h-5 text-gray-700" />
+        <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 flex-shrink-0" />
       ) : (
-        <ChevronDown className="w-5 h-5 text-gray-700" />
+        <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 flex-shrink-0" />
       )}
     </button>
   );
@@ -258,7 +258,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Statut */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
         <label className="block text-sm font-bold text-gray-900 mb-2">
           Statut de la stratégie
         </label>
@@ -277,11 +277,11 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="1. Contexte & Objectifs Business" section="contexte" />
         {expandedSections.contexte && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Contexte général
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Description de l'entreprise, positionnement, ressources, marché)
                 </span>
               </label>
@@ -297,7 +297,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Objectifs business
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Moyen/long terme : CA, notoriété, acquisition, fidélisation...)
                 </span>
               </label>
@@ -311,10 +311,10 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2">
+              <label className="block text-sm font-bold text-gray-900 mb-2 sm:mb-3">
                 Objectifs réseaux sociaux (SMART)
-                <span className="text-gray-500 font-normal text-xs ml-2">
-                  (Spécifiques, Mesurables, Atteignables, Réalistes, Temporellement définis)
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
+                  (Spécifiques, mesurables, atteignables, réalistes, temporels)
                 </span>
               </label>
               <textarea
@@ -333,11 +333,11 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="2. Audience & Personas" section="audience" />
         {expandedSections.audience && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Cibles principales
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Âge, sexe, localisation, centres d'intérêt, comportements)
                 </span>
               </label>
@@ -351,14 +351,14 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             </div>
 
             <div>
-              <div className="flex justify-between items-center mb-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
                 <label className="block text-sm font-bold text-gray-900">
                   Personas marketing (1 à 3 profils types)
                 </label>
                 <button
                   type="button"
                   onClick={addPersona}
-                  className="flex items-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-bold"
+                  className="flex items-center justify-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-bold w-full sm:w-auto"
                 >
                   <Plus className="w-4 h-4 mr-1" />
                   Ajouter un persona
@@ -366,7 +366,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
               </div>
 
               {(formData.personas || []).map((persona, index) => (
-                <div key={index} className="bg-gray-50 p-4 rounded-lg mb-3 space-y-3 border-2 border-gray-200">
+                <div key={index} className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-3 space-y-3 border-2 border-gray-200">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-bold text-gray-700">Persona #{index + 1}</span>
                     <button
@@ -425,7 +425,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
               <label className="block text-sm font-bold text-gray-900 mb-3">
                 Plateformes sociales pertinentes
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {SOCIAL_PLATFORMS.map((platform) => (
                   <label
                     key={platform}
@@ -450,11 +450,11 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="3. Positionnement & Identité de Communication" section="positionnement" />
         {expandedSections.positionnement && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Ton / Voix de la marque
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Ex : professionnel, bienveillant, fun, sérieux, inspirant...)
                 </span>
               </label>
@@ -470,7 +470,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Guidelines visuelles
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Couleurs, typographies, style visuel, type de visuels, cohérence graphique)
                 </span>
               </label>
@@ -486,7 +486,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Valeurs & messages clés
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Ce que la marque défend, promet, son histoire, ce qui la différencie)
                 </span>
               </label>
@@ -506,15 +506,15 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="4. Piliers de Contenu (Content Pillars)" section="piliers" />
         {expandedSections.piliers && (
-          <div className="p-6 space-y-4">
-            <div className="flex justify-between items-center mb-3">
+          <div className="p-4 sm:p-6 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
               <label className="block text-sm font-bold text-gray-900">
                 Définir 3 à 6 thèmes principaux
               </label>
               <button
                 type="button"
                 onClick={addPilier}
-                className="flex items-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-bold"
+                className="flex items-center justify-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-bold w-full sm:w-auto"
               >
                 <Plus className="w-4 h-4 mr-1" />
                 Ajouter un pilier
@@ -522,7 +522,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             </div>
 
             {(formData.piliers_contenu || []).map((pilier, index) => (
-              <div key={index} className="bg-gray-50 p-4 rounded-lg space-y-3 border-2 border-gray-200">
+              <div key={index} className="bg-gray-50 p-3 sm:p-4 rounded-lg space-y-3 border-2 border-gray-200">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-bold text-gray-700">Pilier #{index + 1}</span>
                   <button
@@ -567,12 +567,12 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="5. Formats & Rythme de Publication" section="formats" />
         {expandedSections.formats && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-3">
                 Formats envisagés
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 {CONTENT_FORMATS.map((format) => (
                   <label
                     key={format}
@@ -593,7 +593,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Fréquence & calendrier éditorial
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Quand publier, à quelle fréquence, sur quels canaux)
                 </span>
               </label>
@@ -609,7 +609,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Workflow & rôles
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Qui crée, valide, publie, modère, analyse)
                 </span>
               </label>
@@ -629,11 +629,11 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="6. Audit & Analyse Concurrentielle" section="audit" />
         {expandedSections.audit && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Audit des profils existants
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Ce qui fonctionne ou pas, publications, engagement, lacunes)
                 </span>
               </label>
@@ -649,7 +649,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Veille / Benchmark concurrents
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Ce que font les structures similaires, opportunités, bonnes pratiques)
                 </span>
               </label>
@@ -669,16 +669,16 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="7. KPIs & Suivi" section="kpis" />
         {expandedSections.kpis && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
-              <div className="flex justify-between items-center mb-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-3">
                 <label className="block text-sm font-bold text-gray-900">
                   Indicateurs de performance
                 </label>
                 <button
                   type="button"
                   onClick={addKPI}
-                  className="flex items-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-bold"
+                  className="flex items-center justify-center px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-bold w-full sm:w-auto"
                 >
                   <Plus className="w-4 h-4 mr-1" />
                   Ajouter un KPI
@@ -686,7 +686,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
               </div>
 
               {(formData.kpis || []).map((kpi, index) => (
-                <div key={index} className="bg-gray-50 p-4 rounded-lg mb-3 space-y-3 border-2 border-gray-200">
+                <div key={index} className="bg-gray-50 p-3 sm:p-4 rounded-lg mb-3 space-y-3 border-2 border-gray-200">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-bold text-gray-700">KPI #{index + 1}</span>
                     <button
@@ -728,7 +728,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Cadre de suivi
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Périodicité, analyses & ajustements réguliers)
                 </span>
               </label>
@@ -748,7 +748,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="8. Canaux & Mix Média (Modèle PESO)" section="peso" />
         {expandedSections.peso && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Owned Media
@@ -820,7 +820,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="9. Budget & Ressources" section="budget" />
         {expandedSections.budget && (
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Temps humain
@@ -876,11 +876,11 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <SectionHeader title="10. Planning, Itération & Optimisation" section="planning" />
         {expandedSections.planning && (
-          <div className="p-6 space-y-6">
+          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Planning global
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Contenu, publication, analyse, campagnes, saisons, événements, échéances)
                 </span>
               </label>
@@ -897,14 +897,14 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-3">
                 Calendrier Éditorial
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Planification visuelle des contenus par plateforme)
                 </span>
               </label>
               {isLoadingCalendar ? (
-                <div className="flex items-center justify-center py-12 bg-gray-50 rounded-lg">
+                <div className="flex flex-col sm:flex-row items-center justify-center py-8 sm:py-12 bg-gray-50 rounded-lg">
                   <Loader2 className="w-8 h-8 animate-spin text-brand-orange" />
-                  <span className="ml-3 text-gray-600">Chargement du calendrier...</span>
+                  <span className="mt-2 sm:mt-0 sm:ml-3 text-gray-600">Chargement du calendrier...</span>
                 </div>
               ) : calendar ? (
                 <EditorialCalendarNew
@@ -929,7 +929,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Processus d'itération
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Tester, mesurer, ajuster ce qui marche ou non)
                 </span>
               </label>
@@ -945,7 +945,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
             <div>
               <label className="block text-sm font-bold text-gray-900 mb-2">
                 Mise à jour & réévaluation
-                <span className="text-gray-500 font-normal text-xs ml-2">
+                <span className="text-gray-500 font-normal text-xs ml-1 sm:ml-2 block sm:inline">
                   (Mise à jour régulière, réévaluation des piliers, adaptation selon résultats)
                 </span>
               </label>
@@ -962,7 +962,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       </div>
 
       {/* Notes internes */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
         <label className="block text-sm font-bold text-gray-900 mb-2">
           Notes internes
           <span className="text-gray-500 font-normal text-xs ml-2">
@@ -979,11 +979,11 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
       </div>
 
       {/* Boutons d'action */}
-      <div className="flex flex-wrap gap-3 justify-end bg-white rounded-lg shadow-md p-6">
+      <div className="flex flex-col sm:flex-row gap-3 sm:justify-end bg-white rounded-lg shadow-md p-4 sm:p-6 sticky bottom-0 z-10">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 border-2 border-gray-300 text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-bold"
+          className="w-full sm:w-auto px-6 py-3 sm:py-2 border-2 border-gray-300 text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-bold"
           disabled={isSaving}
         >
           Annuler
@@ -993,7 +993,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
           type="button"
           onClick={(e) => handleSubmit(e, 'brouillon')}
           disabled={isSaving}
-          className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold"
+          className="w-full sm:w-auto px-6 py-3 sm:py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold"
         >
           {isSaving ? (
             <>
@@ -1009,7 +1009,7 @@ export function StrategyForm({ clientId, strategy, onSave, onCancel }: StrategyF
           type="button"
           onClick={(e) => handleSubmit(e, 'actif')}
           disabled={isSaving}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold"
+          className="w-full sm:w-auto px-6 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold"
         >
           {isSaving ? (
             <>

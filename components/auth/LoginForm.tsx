@@ -42,7 +42,7 @@ export function LoginForm() {
               <span className="text-4xl font-bold text-white">YS</span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Connexion</h1>
-            <p className="text-gray-600">Accédez à votre espace client</p>
+            <p className="text-gray-600">Espace Your Story</p>
           </div>
 
           {/* Erreur */}

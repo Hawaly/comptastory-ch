@@ -200,19 +200,19 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
   return (
     <form onSubmit={handleSubmit} className="max-w-6xl mx-auto">
       {/* Header avec progression */}
-      <div className="sticky top-0 z-10 bg-white border-b-2 border-gray-200 shadow-md mb-8">
-        <div className="px-6 py-4">
+      <div className="sticky top-0 z-10 bg-white border-b-2 border-gray-200 shadow-md mb-6 sm:mb-8">
+        <div className="px-3 sm:px-6 py-3 sm:py-4">
           {/* Barre de progression */}
-          <div className="mb-4">
+          <div className="mb-3 sm:mb-4">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-semibold text-gray-700">
+              <span className="text-xs sm:text-sm font-semibold text-gray-700">
                 Étape {currentSection + 1} sur {SECTIONS.length}
               </span>
-              <span className="text-sm font-semibold text-brand-orange">
-                {Math.round(progressPercentage)}% complété
+              <span className="text-xs sm:text-sm font-semibold text-brand-orange">
+                {Math.round(progressPercentage)}% completé
               </span>
             </div>
-            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-brand-orange to-brand-orange-light transition-all duration-500"
                 style={{ width: `${progressPercentage}%` }}
@@ -221,7 +221,7 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
           </div>
 
           {/* Navigation par étapes */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 -mx-1 px-1">
             {SECTIONS.map((section, index) => {
               const Icon = section.icon;
               const isCompleted = completedSections.has(index);
@@ -232,7 +232,7 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
                   key={section.id}
                   type="button"
                   onClick={() => goToSection(index)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                     isCurrent
                       ? 'bg-brand-orange text-white shadow-md scale-105'
                       : isCompleted
@@ -241,9 +241,9 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
                   }`}
                 >
                   {isCompleted ? (
-                    <Check className="w-4 h-4" />
+                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
                   ) : (
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
                   )}
                   <span className="hidden sm:inline">{section.title}</span>
                 </button>
@@ -254,16 +254,16 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
       </div>
 
       {/* Contenu de la section actuelle */}
-      <div className="px-6">
+      <div className="px-3 sm:px-6">
         {/* Titre de section */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="p-4 bg-brand-orange/10 rounded-2xl">
-              <SectionIcon className="w-8 h-8 text-brand-orange" />
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-3">
+            <div className="p-3 sm:p-4 bg-brand-orange/10 rounded-xl sm:rounded-2xl flex-shrink-0">
+              <SectionIcon className="w-6 h-6 sm:w-8 sm:h-8 text-brand-orange" />
             </div>
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">{currentSectionData.title}</h2>
-              <p className="text-sm text-gray-600 mt-1">
+            <div className="min-w-0">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 break-words">{currentSectionData.title}</h2>
+              <p className="text-xs sm:text-sm text-gray-600 mt-1">
                 Étape {currentSection + 1} de {SECTIONS.length}
               </p>
             </div>
@@ -325,17 +325,18 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
         </div>
 
         {/* Navigation bas de page */}
-        <div className="sticky bottom-0 bg-white border-t-2 border-gray-200 p-6 mt-8 -mx-6 shadow-lg">
-          <div className="flex justify-between items-center max-w-6xl mx-auto">
-            <div className="flex gap-3">
+        <div className="sticky bottom-0 bg-white border-t-2 border-gray-200 p-3 sm:p-6 mt-6 sm:mt-8 -mx-3 sm:-mx-6 shadow-lg">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 max-w-6xl mx-auto">
+            <div className="flex gap-2 sm:gap-3 order-2 sm:order-1">
               <Button
                 type="button"
                 variant="ghost"
                 onClick={onCancel}
                 disabled={isSaving}
+                className="flex-1 sm:flex-none"
               >
-                <X className="w-4 h-4 mr-2" />
-                Annuler
+                <X className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Annuler</span>
               </Button>
               {currentSection > 0 && (
                 <Button
@@ -343,21 +344,22 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
                   variant="ghost"
                   onClick={previousSection}
                   disabled={isSaving}
+                  className="flex-1 sm:flex-none"
                 >
-                  ← Précédent
+                  ← <span className="hidden sm:inline ml-1">Précédent</span>
                 </Button>
               )}
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3 order-1 sm:order-2">
               <Button
                 type="submit"
                 variant="ghost"
-                className="border-2 border-green-500 text-green-700 hover:bg-green-50"
+                className="border-2 border-green-500 text-green-700 hover:bg-green-50 flex-1 sm:flex-none"
                 isLoading={isSaving}
               >
-                <Save className="w-4 h-4 mr-2" />
-                {strategy ? 'Mettre à jour' : 'Sauvegarder'}
+                <Save className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">{strategy ? 'Mettre à jour' : 'Sauvegarder'}</span>
               </Button>
               
               {currentSection < SECTIONS.length - 1 ? (
@@ -366,17 +368,19 @@ export function ModernStrategyForm({ clientId, strategy, onSave, onCancel }: Mod
                   variant="primary"
                   onClick={nextSection}
                   disabled={isSaving}
+                  className="flex-1 sm:flex-none"
                 >
-                  Suivant
-                  <ChevronRight className="w-4 h-4 ml-2" />
+                  <span className="hidden sm:inline">Suivant</span>
+                  <ChevronRight className="w-4 h-4 sm:ml-2" />
                 </Button>
               ) : (
                 <Button
                   type="submit"
                   variant="primary"
                   isLoading={isSaving}
+                  className="flex-1 sm:flex-none"
                 >
-                  <Check className="w-4 h-4 mr-2" />
+                  <Check className="w-4 h-4 sm:mr-2" />
                   Finaliser
                 </Button>
               )}

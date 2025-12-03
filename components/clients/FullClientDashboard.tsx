@@ -200,64 +200,64 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
   return (
     <div className="space-y-6">
       {/* En-tête Dashboard */}
-      <div className="bg-gradient-to-r from-brand-orange via-brand-orange-light to-yellow-400 rounded-2xl shadow-2xl p-8 text-white">
+      <div className="bg-gradient-to-r from-brand-orange via-brand-orange-light to-yellow-400 rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 text-white">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-          <div>
-            <h1 className="text-4xl font-bold mb-2">{client.name}</h1>
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 break-words">{client.name}</h1>
             {client.company_name && (
-              <p className="text-xl text-white/90">{client.company_name}</p>
+              <p className="text-base sm:text-lg lg:text-xl text-white/90 break-words">{client.company_name}</p>
             )}
-            <div className="flex flex-wrap gap-4 mt-4 text-sm">
+            <div className="flex flex-wrap gap-2 sm:gap-4 mt-3 sm:mt-4 text-xs sm:text-sm">
               {client.email && (
-                <span className="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full">
-                  <FileText className="w-4 h-4" />
-                  {client.email}
+                <span className="flex items-center gap-1.5 sm:gap-2 bg-white/20 px-2 sm:px-3 py-1 rounded-full truncate max-w-full">
+                  <FileText className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <span className="truncate">{client.email}</span>
                 </span>
               )}
               {client.phone && (
-                <span className="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full">
-                  <Activity className="w-4 h-4" />
+                <span className="flex items-center gap-1.5 sm:gap-2 bg-white/20 px-2 sm:px-3 py-1 rounded-full">
+                  <Activity className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                   {client.phone}
                 </span>
               )}
             </div>
           </div>
           
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full lg:w-auto">
             <Link
               href={`/clients/${client.id}/strategies`}
-              className="flex items-center gap-2 px-6 py-3 bg-white text-brand-orange rounded-xl font-bold hover:shadow-xl transition-all"
+              className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-brand-orange rounded-xl font-bold hover:shadow-xl transition-all"
             >
-              <Target className="w-5 h-5" />
-              Stratégies
+              <Target className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Stratégies</span>
             </Link>
             <Link
               href={`/clients/${client.id}`}
-              className="flex items-center gap-2 px-6 py-3 bg-white/20 text-white rounded-xl font-bold hover:bg-white/30 transition-all"
+              className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/20 text-white rounded-xl font-bold hover:bg-white/30 transition-all"
             >
-              <Eye className="w-5 h-5" />
-              Vue Détaillée
+              <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Vue Détaillée</span>
             </Link>
           </div>
         </div>
       </div>
 
       {/* Cartes Statistiques Principales */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {/* Stratégies */}
-        <Card className="relative overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 text-white p-6 hover:shadow-2xl transition-all cursor-pointer group">
+        <Card className="relative overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 text-white p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer group">
           <Link href={`/clients/${client.id}/strategies`} className="block">
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform" />
             <div className="relative">
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-3 bg-white/20 rounded-xl">
-                  <Target className="w-8 h-8" />
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl">
+                  <Target className="w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
-                <ArrowUpRight className="w-6 h-6 opacity-50 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 opacity-50 group-hover:opacity-100 transition-opacity" />
               </div>
-              <h3 className="text-sm font-semibold mb-2 text-white/90">Stratégies Social Media</h3>
-              <div className="text-4xl font-bold mb-2">{stats.strategies.total}</div>
-              <div className="flex items-center gap-3 text-xs">
+              <h3 className="text-xs sm:text-sm font-semibold mb-2 text-white/90">Stratégies Social Media</h3>
+              <div className="text-3xl sm:text-4xl font-bold mb-2">{stats.strategies.total}</div>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
                 <span className="flex items-center gap-1">
                   <CheckCircle className="w-4 h-4" />
                   {stats.strategies.active} actives
@@ -271,18 +271,18 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
         </Card>
 
         {/* Mandats */}
-        <Card className="relative overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-6 hover:shadow-2xl transition-all cursor-pointer group">
+        <Card className="relative overflow-hidden bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-4 sm:p-6 hover:shadow-2xl transition-all cursor-pointer group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform" />
           <div className="relative">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-white/20 rounded-xl">
-                <Briefcase className="w-8 h-8" />
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl">
+                <Briefcase className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
-              <TrendingUp className="w-6 h-6 opacity-50" />
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 opacity-50" />
             </div>
-            <h3 className="text-sm font-semibold mb-2 text-white/90">Mandats</h3>
-            <div className="text-4xl font-bold mb-2">{stats.mandats.total}</div>
-            <div className="flex items-center gap-3 text-xs">
+            <h3 className="text-xs sm:text-sm font-semibold mb-2 text-white/90">Mandats</h3>
+            <div className="text-3xl sm:text-4xl font-bold mb-2">{stats.mandats.total}</div>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
               <span className="flex items-center gap-1">
                 <Activity className="w-4 h-4" />
                 {stats.mandats.enCours} en cours
@@ -295,21 +295,21 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
         </Card>
 
         {/* Revenus */}
-        <Card className="relative overflow-hidden bg-gradient-to-br from-green-500 to-emerald-600 text-white p-6 hover:shadow-2xl transition-all group">
+        <Card className="relative overflow-hidden bg-gradient-to-br from-green-500 to-emerald-600 text-white p-4 sm:p-6 hover:shadow-2xl transition-all group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform" />
           <div className="relative">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-white/20 rounded-xl">
-                <DollarSign className="w-8 h-8" />
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl">
+                <DollarSign className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               {revenuNet > 0 ? (
-                <ArrowUpRight className="w-6 h-6 text-green-200" />
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-green-200" />
               ) : (
-                <ArrowDownRight className="w-6 h-6 text-red-200" />
+                <ArrowDownRight className="w-5 h-5 sm:w-6 sm:h-6 text-red-200" />
               )}
             </div>
-            <h3 className="text-sm font-semibold mb-2 text-white/90">Revenu Net</h3>
-            <div className="text-4xl font-bold mb-2">
+            <h3 className="text-xs sm:text-sm font-semibold mb-2 text-white/90">Revenu Net</h3>
+            <div className="text-3xl sm:text-4xl font-bold mb-2">
               {revenuNet.toLocaleString('fr-CH')}
             </div>
             <div className="flex items-center gap-3 text-xs">
@@ -321,21 +321,21 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
         </Card>
 
         {/* Factures */}
-        <Card className="relative overflow-hidden bg-gradient-to-br from-purple-500 to-pink-600 text-white p-6 hover:shadow-2xl transition-all group">
+        <Card className="relative overflow-hidden bg-gradient-to-br from-purple-500 to-pink-600 text-white p-4 sm:p-6 hover:shadow-2xl transition-all group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform" />
           <div className="relative">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-white/20 rounded-xl">
-                <FileText className="w-8 h-8" />
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl">
+                <FileText className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold">{Math.round(tauxPaiement)}%</div>
+                <div className="text-xl sm:text-2xl font-bold">{Math.round(tauxPaiement)}%</div>
                 <div className="text-xs text-white/70">payées</div>
               </div>
             </div>
-            <h3 className="text-sm font-semibold mb-2 text-white/90">Factures</h3>
-            <div className="text-4xl font-bold mb-2">{stats.factures.total}</div>
-            <div className="flex items-center gap-3 text-xs">
+            <h3 className="text-xs sm:text-sm font-semibold mb-2 text-white/90">Factures</h3>
+            <div className="text-3xl sm:text-4xl font-bold mb-2">{stats.factures.total}</div>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
               <span className="flex items-center gap-1">
                 <CheckCircle className="w-4 h-4" />
                 {stats.factures.payees}
@@ -352,24 +352,24 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
       </div>
 
       {/* Grille principale */}
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
         {/* Timeline - 2 colonnes */}
         <div className="lg:col-span-2">
-          <Card className="p-6 h-full">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-brand-orange/10 rounded-xl">
-                  <Activity className="w-6 h-6 text-brand-orange" />
+          <Card className="p-4 sm:p-6 h-full">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="p-2 bg-brand-orange/10 rounded-lg sm:rounded-xl">
+                  <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange" />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">Activité Récente</h2>
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900">Activité Récente</h2>
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {timelineItems.length === 0 ? (
-                <div className="text-center py-12">
-                  <Activity className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-500 font-medium">Aucune activité récente</p>
+                <div className="text-center py-8 sm:py-12">
+                  <Activity className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300 mx-auto mb-4" />
+                  <p className="text-sm sm:text-base text-gray-500 font-medium">Aucune activité récente</p>
                 </div>
               ) : (
                 timelineItems.map((item) => {
@@ -384,28 +384,28 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
                   return (
                     <div
                       key={item.id}
-                      className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors border-2 border-transparent hover:border-gray-200"
+                      className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors border-2 border-transparent hover:border-gray-200"
                     >
-                      <div className={`p-2 rounded-xl ${colorClasses[item.color as keyof typeof colorClasses]}`}>
-                        <Icon className="w-5 h-5" />
+                      <div className={`p-2 rounded-lg sm:rounded-xl flex-shrink-0 ${colorClasses[item.color as keyof typeof colorClasses]}`}>
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-bold text-gray-900 truncate">{item.title}</h4>
-                        <p className="text-sm text-gray-600 line-clamp-1">{item.subtitle}</p>
-                        <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                      <div className="flex-1 min-w-0 w-full">
+                        <h4 className="font-bold text-gray-900 truncate text-sm sm:text-base">{item.title}</h4>
+                        <p className="text-xs sm:text-sm text-gray-600 line-clamp-1">{item.subtitle}</p>
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-2 text-xs text-gray-500">
                           <span className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            {item.date.toLocaleDateString('fr-FR')}
+                            <Calendar className="w-3 h-3 flex-shrink-0" />
+                            <span className="truncate">{item.date.toLocaleDateString('fr-FR')}</span>
                           </span>
                           {item.amount && (
-                            <span className="font-semibold text-gray-700">
+                            <span className="font-semibold text-gray-700 whitespace-nowrap">
                               {item.amount.toLocaleString('fr-CH')} CHF
                             </span>
                           )}
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      <div className="flex items-center gap-2 sm:ml-auto">
+                        <span className={`px-2 sm:px-3 py-1 text-xs font-semibold rounded-full whitespace-nowrap ${
                           item.status === 'actif' || item.status === 'en_cours' || item.status === 'payee'
                             ? 'bg-green-100 text-green-700'
                             : item.status === 'brouillon' || item.status === 'envoyee'
@@ -424,47 +424,47 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
         </div>
 
         {/* Actions Rapides - 1 colonne */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Actions */}
-          <Card className="p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Actions Rapides</h3>
-            <div className="space-y-3">
+          <Card className="p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Actions Rapides</h3>
+            <div className="space-y-2 sm:space-y-3">
               <Link
                 href={`/clients/${client.id}/strategies/new`}
-                className="flex items-center gap-3 p-4 bg-gradient-to-r from-brand-orange to-brand-orange-light text-white rounded-xl hover:shadow-lg transition-all font-semibold"
+                className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gradient-to-r from-brand-orange to-brand-orange-light text-white rounded-lg sm:rounded-xl hover:shadow-lg transition-all font-semibold text-sm sm:text-base"
               >
-                <div className="p-2 bg-white/20 rounded-lg">
-                  <Plus className="w-5 h-5" />
+                <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg flex-shrink-0">
+                  <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span>Nouvelle Stratégie</span>
               </Link>
 
               <Link
                 href={`/mandats/new?client=${client.id}`}
-                className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all font-semibold"
+                className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg sm:rounded-xl hover:shadow-lg transition-all font-semibold text-sm sm:text-base"
               >
-                <div className="p-2 bg-white/20 rounded-lg">
-                  <Briefcase className="w-5 h-5" />
+                <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg flex-shrink-0">
+                  <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span>Nouveau Mandat</span>
               </Link>
 
               <Link
                 href={`/factures/new?client=${client.id}`}
-                className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:shadow-lg transition-all font-semibold"
+                className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg sm:rounded-xl hover:shadow-lg transition-all font-semibold text-sm sm:text-base"
               >
-                <div className="p-2 bg-white/20 rounded-lg">
-                  <FileText className="w-5 h-5" />
+                <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg flex-shrink-0">
+                  <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span>Nouvelle Facture</span>
               </Link>
 
               <Link
                 href={`/expenses/new?client=${client.id}`}
-                className="flex items-center gap-3 p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl hover:shadow-lg transition-all font-semibold"
+                className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg sm:rounded-xl hover:shadow-lg transition-all font-semibold text-sm sm:text-base"
               >
-                <div className="p-2 bg-white/20 rounded-lg">
-                  <Receipt className="w-5 h-5" />
+                <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg flex-shrink-0">
+                  <Receipt className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <span>Nouvelle Dépense</span>
               </Link>
@@ -472,8 +472,8 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
           </Card>
 
           {/* Statut général */}
-          <Card className="p-6 bg-gradient-to-br from-gray-50 to-gray-100">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Statut Général</h3>
+          <Card className="p-4 sm:p-6 bg-gradient-to-br from-gray-50 to-gray-100">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">Statut Général</h3>
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between text-sm mb-2">
@@ -525,11 +525,11 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
       </div>
 
       {/* Aperçus détaillés */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
         {/* Stratégies Récentes */}
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-gray-900">Stratégies Actives</h3>
+        <Card className="p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900">Stratégies Actives</h3>
             <Link
               href={`/clients/${client.id}/strategies`}
               className="text-brand-orange font-semibold text-sm hover:underline"
@@ -537,23 +537,23 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
               Voir tout →
             </Link>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {data.strategies.slice(0, 3).length === 0 ? (
-              <div className="text-center py-8">
-                <Target className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                <p className="text-gray-500">Aucune stratégie</p>
+              <div className="text-center py-6 sm:py-8">
+                <Target className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-sm sm:text-base text-gray-500">Aucune stratégie</p>
               </div>
             ) : (
               data.strategies.slice(0, 3).map((strategy) => (
                 <Link
                   key={strategy.id}
                   href={`/clients/${client.id}/strategies`}
-                  className="block p-4 bg-gray-50 rounded-xl hover:bg-brand-orange/10 hover:border-brand-orange border-2 border-transparent transition-all"
+                  className="block p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl hover:bg-brand-orange/10 hover:border-brand-orange border-2 border-transparent transition-all"
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <h4 className="font-bold text-gray-900">Stratégie v{strategy.version}</h4>
-                      <p className="text-sm text-gray-600 line-clamp-1 mt-1">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0 w-full">
+                      <h4 className="font-bold text-gray-900 text-sm sm:text-base">Stratégie v{strategy.version}</h4>
+                      <p className="text-xs sm:text-sm text-gray-600 line-clamp-1 mt-1">
                         {strategy.contexte_general || 'Stratégie social media'}
                       </p>
                       {strategy.plateformes && strategy.plateformes.length > 0 && (
@@ -561,7 +561,7 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
                           {strategy.plateformes.slice(0, 3).map((platform, idx) => (
                             <span
                               key={idx}
-                              className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full"
+                              className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full"
                             >
                               {platform}
                             </span>
@@ -569,7 +569,7 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
                         </div>
                       )}
                     </div>
-                    <span className={`px-3 py-1 text-xs font-semibold rounded-full whitespace-nowrap ml-2 ${
+                    <span className={`px-2 sm:px-3 py-1 text-xs font-semibold rounded-full whitespace-nowrap ${
                       strategy.status === 'actif'
                         ? 'bg-green-100 text-green-700'
                         : 'bg-yellow-100 text-yellow-700'
@@ -584,9 +584,9 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
         </Card>
 
         {/* Factures Récentes */}
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold text-gray-900">Factures Récentes</h3>
+        <Card className="p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900">Factures Récentes</h3>
             <Link
               href={`/factures?client=${client.id}`}
               className="text-purple-600 font-semibold text-sm hover:underline"
@@ -594,26 +594,26 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
               Voir tout →
             </Link>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {data.factures.slice(0, 3).length === 0 ? (
-              <div className="text-center py-8">
-                <FileText className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                <p className="text-gray-500">Aucune facture</p>
+              <div className="text-center py-6 sm:py-8">
+                <FileText className="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 mx-auto mb-3" />
+                <p className="text-sm sm:text-base text-gray-500">Aucune facture</p>
               </div>
             ) : (
               data.factures.slice(0, 3).map((facture) => (
                 <div
                   key={facture.id}
-                  className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-200 transition-all"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-200 transition-all"
                 >
-                  <div className="flex-1">
-                    <h4 className="font-bold text-gray-900">Facture {facture.invoice_number}</h4>
-                    <p className="text-sm text-gray-600">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-gray-900 text-sm sm:text-base truncate">Facture {facture.invoice_number}</h4>
+                    <p className="text-xs sm:text-sm text-gray-600">
                       {new Date(facture.issue_date).toLocaleDateString('fr-FR')}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <div className="font-bold text-gray-900">
+                  <div className="text-left sm:text-right w-full sm:w-auto">
+                    <div className="font-bold text-gray-900 text-sm sm:text-base">
                       {facture.total_ttc?.toLocaleString('fr-CH')} CHF
                     </div>
                     <span className={`inline-block px-2 py-1 text-xs font-semibold rounded-full mt-1 ${

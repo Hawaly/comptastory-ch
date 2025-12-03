@@ -85,8 +85,8 @@ export default function ClientDashboardPage() {
     return (
       <>
         <Header title="Chargement..." />
-        <main className="p-4 sm:p-6 lg:p-8">
-          <div className="bg-white rounded-lg shadow-md p-12 text-center">
+        <main className="p-3 sm:p-6 lg:p-8">
+          <div className="bg-white rounded-lg shadow-md p-8 sm:p-12 text-center">
             <Loader2 className="w-10 h-10 animate-spin text-brand-orange mx-auto mb-4" />
             <p className="text-gray-900 font-semibold">Chargement du dashboard...</p>
           </div>
@@ -99,8 +99,8 @@ export default function ClientDashboardPage() {
     return (
       <>
         <Header title="Erreur" />
-        <main className="p-4 sm:p-6 lg:p-8">
-          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-6">
+        <main className="p-3 sm:p-6 lg:p-8">
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 sm:p-6">
             <p className="text-red-900 font-semibold">{error || "Client non trouvé"}</p>
             <Link
               href="/clients"
@@ -117,40 +117,40 @@ export default function ClientDashboardPage() {
   return (
     <>
       <Header title={`Dashboard - ${client.name}`} />
-      <main className="p-4 sm:p-6 lg:p-8 max-w-[1600px] mx-auto">
+      <main className="p-3 sm:p-6 lg:p-8 max-w-[1600px] mx-auto">
         {/* Barre d'actions supérieure */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
           <Link
             href="/clients"
-            className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold"
+            className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold text-sm sm:text-base"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour aux clients
           </Link>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={() => router.push(`/clients/${clientId}/edit`)}
-              className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-bold"
+              className="flex items-center justify-center space-x-2 px-4 py-3 sm:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-bold flex-1 sm:flex-none"
             >
               <Edit className="w-4 h-4" />
-              <span>Modifier</span>
+              <span className="hidden sm:inline">Modifier</span>
             </button>
 
             <button
               onClick={handleDelete}
               disabled={isDeleting}
-              className="flex items-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-bold disabled:opacity-50"
+              className="flex items-center justify-center space-x-2 px-4 py-3 sm:py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-bold disabled:opacity-50 flex-1 sm:flex-none"
             >
               {isDeleting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Suppression...</span>
+                  <span className="hidden sm:inline">Suppression...</span>
                 </>
               ) : (
                 <>
                   <Trash2 className="w-4 h-4" />
-                  <span>Supprimer</span>
+                  <span className="hidden sm:inline">Supprimer</span>
                 </>
               )}
             </button>

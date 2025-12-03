@@ -169,8 +169,8 @@ export default function ClientStrategiesPage() {
     return (
       <>
         <Header title="Chargement..." />
-        <main className="p-4 sm:p-6 lg:p-8">
-          <div className="bg-white rounded-lg shadow-md p-12 text-center">
+        <main className="p-3 sm:p-6 lg:p-8">
+          <div className="bg-white rounded-lg shadow-md p-8 sm:p-12 text-center">
             <Loader2 className="w-10 h-10 animate-spin text-brand-orange mx-auto mb-4" />
             <p className="text-gray-900 font-semibold">Chargement...</p>
           </div>
@@ -183,8 +183,8 @@ export default function ClientStrategiesPage() {
     return (
       <>
         <Header title="Erreur" />
-        <main className="p-4 sm:p-6 lg:p-8">
-          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-6">
+        <main className="p-3 sm:p-6 lg:p-8">
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 sm:p-6">
             <p className="text-red-900 font-semibold">{error || "Client non trouvé"}</p>
             <Link
               href="/clients"
@@ -203,19 +203,19 @@ export default function ClientStrategiesPage() {
     return (
       <>
         <Header title={selectedStrategy ? "Modifier la stratégie" : "Nouvelle stratégie"} />
-        <main className="p-4 sm:p-6 lg:p-8">
-          <div className="mb-6">
+        <main className="p-3 sm:p-6 lg:p-8">
+          <div className="mb-4 sm:mb-6">
             <button
               onClick={handleCancel}
-              className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold"
+              className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold text-sm sm:text-base"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour à la liste
             </button>
           </div>
 
-          <div className="bg-gradient-to-r from-brand-orange/10 to-brand-orange/5 rounded-lg p-4 mb-6 border-2 border-brand-orange/20">
-            <h2 className="text-xl font-bold text-gray-900">Client: {client.name}</h2>
+          <div className="bg-gradient-to-r from-brand-orange/10 to-brand-orange/5 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6 border-2 border-brand-orange/20">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">Client: {client.name}</h2>
             {client.company_name && (
               <p className="text-gray-700 font-medium">{client.company_name}</p>
             )}
@@ -237,11 +237,11 @@ export default function ClientStrategiesPage() {
     return (
       <>
         <Header title="Stratégie Social Media" />
-        <main className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
-          <div className="mb-6">
+        <main className="p-3 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+          <div className="mb-4 sm:mb-6">
             <button
               onClick={handleCancel}
-              className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold no-print"
+              className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold text-sm sm:text-base no-print"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour à la liste
@@ -263,12 +263,12 @@ export default function ClientStrategiesPage() {
   return (
     <>
       <Header title="Stratégies Social Media" />
-      <main className="p-4 sm:p-6 lg:p-8">
+      <main className="p-3 sm:p-6 lg:p-8">
         {/* Breadcrumb */}
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
           <Link
             href={`/clients/${clientId}`}
-            className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold"
+            className="flex items-center text-gray-900 hover:text-brand-orange transition-colors font-semibold text-sm sm:text-base"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour au client
@@ -276,7 +276,7 @@ export default function ClientStrategiesPage() {
 
           <button
             onClick={handleNewStrategy}
-            className="flex items-center space-x-2 px-4 py-2 bg-brand-orange text-white rounded-lg hover:bg-brand-orange-dark transition-colors font-bold shadow-md hover:shadow-lg"
+            className="flex items-center justify-center space-x-2 px-4 py-3 sm:py-2 bg-brand-orange text-white rounded-lg hover:bg-brand-orange-dark transition-colors font-bold shadow-md hover:shadow-lg w-full sm:w-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Nouvelle stratégie</span>
@@ -284,83 +284,83 @@ export default function ClientStrategiesPage() {
         </div>
 
         {/* Info client */}
-        <div className="bg-gradient-to-r from-brand-orange/10 to-brand-orange/5 rounded-xl shadow-md p-6 mb-6 border-2 border-brand-orange/20">
-          <div className="flex items-center gap-3 mb-2">
-            <Target className="w-8 h-8 text-brand-orange" />
-            <h1 className="text-2xl font-bold text-gray-900">{client.name}</h1>
+        <div className="bg-gradient-to-r from-brand-orange/10 to-brand-orange/5 rounded-xl shadow-md p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-brand-orange/20">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2">
+            <Target className="w-6 h-6 sm:w-8 sm:h-8 text-brand-orange flex-shrink-0" />
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 break-words">{client.name}</h1>
           </div>
           {client.company_name && (
-            <p className="text-gray-700 font-medium ml-11">{client.company_name}</p>
+            <p className="text-sm sm:text-base text-gray-700 font-medium ml-8 sm:ml-11">{client.company_name}</p>
           )}
         </div>
 
         {/* Liste des stratégies */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">
             Stratégies Social Media ({strategies.length})
           </h2>
 
           {strategies.length === 0 ? (
-            <div className="text-center py-12">
-              <Target className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600 font-medium mb-2">
+            <div className="text-center py-8 sm:py-12">
+              <Target className="w-12 h-12 sm:w-16 sm:h-16 text-gray-400 mx-auto mb-4" />
+              <p className="text-gray-600 font-medium mb-2 text-sm sm:text-base">
                 Aucune stratégie social media définie
               </p>
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-xs sm:text-sm text-gray-500 mb-4 px-4">
                 Commencez par créer une première stratégie pour ce client
               </p>
               <button
                 onClick={handleNewStrategy}
-                className="inline-flex items-center px-4 py-2 bg-brand-orange text-white rounded-lg hover:bg-brand-orange-dark transition-colors font-bold"
+                className="inline-flex items-center px-4 py-3 sm:py-2 bg-brand-orange text-white rounded-lg hover:bg-brand-orange-dark transition-colors font-bold"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Créer la première stratégie
               </button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {strategies.map((strategy) => (
                 <div
                   key={strategy.id}
-                  className="border-2 border-gray-200 rounded-xl p-5 hover:border-brand-orange hover:shadow-md transition-all"
+                  className="border-2 border-gray-200 rounded-xl p-3 sm:p-5 hover:border-brand-orange hover:shadow-md transition-all"
                 >
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Target className="w-6 h-6 text-brand-orange" />
-                        <h3 className="text-lg font-bold text-gray-900">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-3 flex-wrap">
+                        <Target className="w-5 h-5 sm:w-6 sm:h-6 text-brand-orange flex-shrink-0" />
+                        <h3 className="text-base sm:text-lg font-bold text-gray-900">
                           Stratégie v{strategy.version}
                         </h3>
-                        <span className={`px-3 py-1 text-sm font-semibold rounded-full ${STRATEGY_STATUS_COLORS[strategy.status]}`}>
+                        <span className={`px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold rounded-full ${STRATEGY_STATUS_COLORS[strategy.status]}`}>
                           {STRATEGY_STATUS_LABELS[strategy.status]}
                         </span>
                       </div>
 
-                      <div className="flex items-center text-sm text-gray-600 space-x-4 ml-9">
+                      <div className="flex flex-col sm:flex-row sm:items-center text-xs sm:text-sm text-gray-600 gap-2 sm:gap-4 sm:ml-8">
                         <div className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          Créée: {new Date(strategy.created_at).toLocaleDateString("fr-FR")}
+                          <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 flex-shrink-0" />
+                          <span className="truncate">Créée: {new Date(strategy.created_at).toLocaleDateString("fr-FR")}</span>
                         </div>
                         <div className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          Modifiée: {new Date(strategy.updated_at).toLocaleDateString("fr-FR")}
+                          <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 flex-shrink-0" />
+                          <span className="truncate">Modifiée: {new Date(strategy.updated_at).toLocaleDateString("fr-FR")}</span>
                         </div>
                       </div>
 
                       {/* Aperçu du contenu */}
                       {strategy.contexte_general && (
-                        <p className="text-sm text-gray-700 mt-3 ml-9 line-clamp-2">
+                        <p className="text-xs sm:text-sm text-gray-700 mt-2 sm:mt-3 sm:ml-8 line-clamp-2">
                           {strategy.contexte_general}
                         </p>
                       )}
 
                       {/* Plateformes */}
                       {strategy.plateformes && strategy.plateformes.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-3 ml-9">
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2 sm:mt-3 sm:ml-8">
                           {strategy.plateformes.map((platform, idx) => (
                             <span
                               key={idx}
-                              className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full"
+                              className="px-2 py-0.5 sm:py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full"
                             >
                               {platform}
                             </span>
@@ -369,20 +369,20 @@ export default function ClientStrategiesPage() {
                       )}
                     </div>
 
-                    <div className="flex gap-2 ml-4">
+                    <div className="flex sm:flex-col gap-2 justify-end sm:ml-4">
                       <button
                         onClick={() => handleViewStrategy(strategy)}
                         className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Voir"
                       >
-                        <Eye className="w-5 h-5" />
+                        <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                       <button
                         onClick={() => handleEditStrategy(strategy)}
                         className="p-2 text-brand-orange hover:bg-brand-orange/10 rounded-lg transition-colors"
                         title="Modifier"
                       >
-                        <FileText className="w-5 h-5" />
+                        <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                       <button
                         onClick={() => handleDeleteStrategy(strategy.id)}
@@ -391,9 +391,9 @@ export default function ClientStrategiesPage() {
                         title="Supprimer"
                       >
                         {isDeleting === strategy.id ? (
-                          <Loader2 className="w-5 h-5 animate-spin" />
+                          <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
                         ) : (
-                          <Trash2 className="w-5 h-5" />
+                          <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                         )}
                       </button>
                     </div>
