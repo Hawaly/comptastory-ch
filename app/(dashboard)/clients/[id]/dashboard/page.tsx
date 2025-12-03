@@ -9,8 +9,7 @@ import {
   ArrowLeft, 
   Edit, 
   Trash2, 
-  Loader2,
-  Settings
+  Loader2
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { Client } from "@/types/database";

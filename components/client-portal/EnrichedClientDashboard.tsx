@@ -5,9 +5,7 @@ import { useAuth } from '@/contexts/SimpleAuthContext';
 import {
   Target,
   FileText,
-  Receipt,
   Briefcase,
-  Calendar,
   LogOut,
   User as UserIcon,
   Mail,
@@ -18,32 +16,21 @@ import {
   Eye,
   CheckCircle,
   Clock,
-  AlertCircle,
   Loader2,
-  BarChart3,
-  PieChart,
   Activity,
   Award,
   Zap,
   DollarSign,
-  Users,
   MessageSquare,
   Bell,
-  ChevronRight,
-  ExternalLink,
-  Info,
-  TrendingDown,
-  Filter,
-  Search,
-  Calendar as CalendarIcon,
   Globe,
-  Hash,
-  Sparkles
+  Sparkles,
+  PieChart,
+  Calendar as CalendarIcon
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { supabase } from '@/lib/supabaseClient';
 import type { SocialMediaStrategy, Invoice, Mandat } from '@/types/database';
-import Link from 'next/link';
 
 interface User {
   id: number;
@@ -84,6 +71,7 @@ export function EnrichedClientDashboard({ user }: ClientPortalDashboardProps) {
     if (user.client_id) {
       loadClientData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.client_id]);
 
   const loadClientData = async () => {
@@ -532,7 +520,7 @@ export function EnrichedClientDashboard({ user }: ClientPortalDashboardProps) {
                   </button>
                   <button className="w-full flex items-center gap-3 p-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:shadow-lg transition-all">
                     <Mail className="w-5 h-5" />
-                    <span className="font-semibold text-sm">Contacter l'équipe</span>
+                    <span className="font-semibold text-sm">Contacter l&apos;équipe</span>
                   </button>
                   <button className="w-full flex items-center gap-3 p-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-all">
                     <UserIcon className="w-5 h-5" />
@@ -721,7 +709,7 @@ export function EnrichedClientDashboard({ user }: ClientPortalDashboardProps) {
           <div>
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Vos Mandats</h2>
-              <p className="text-gray-600">Suivez l'avancement de vos projets</p>
+              <p className="text-gray-600">Suivez l&apos;avancement de vos projets</p>
             </div>
 
             {data.mandats.length === 0 ? (
@@ -843,7 +831,7 @@ export function EnrichedClientDashboard({ user }: ClientPortalDashboardProps) {
             <Card className="p-6 mt-6 bg-gradient-to-r from-orange-50 to-red-50 border-2 border-orange-200">
               <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-orange-600" />
-                Besoin d'Aide ?
+                Besoin d&apos;Aide ?
               </h3>
               <p className="text-gray-700 mb-4">
                 Notre équipe est à votre disposition pour répondre à toutes vos questions

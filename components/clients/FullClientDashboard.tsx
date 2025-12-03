@@ -13,16 +13,10 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   DollarSign,
-  Clock,
   CheckCircle,
   AlertCircle,
   Plus,
-  Eye,
-  Edit,
-  BarChart3,
-  PieChart,
-  Users,
-  Layers
+  Eye
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { supabase } from '@/lib/supabaseClient';
@@ -37,8 +31,8 @@ interface DashboardData {
   strategies: SocialMediaStrategy[];
   mandats: Mandat[];
   factures: Invoice[];
-  depenses: any[];
-  contracts: any[];
+  depenses: Array<{ id: number; amount: number; description: string }>;
+  contracts: Array<{ id: number; type: string; status: string }>;
 }
 
 interface TimelineItem {
@@ -49,7 +43,7 @@ interface TimelineItem {
   date: Date;
   status: string;
   amount?: number;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   color: string;
 }
 
@@ -60,6 +54,7 @@ export function FullClientDashboard({ client }: FullClientDashboardProps) {
 
   useEffect(() => {
     loadDashboardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [client.id]);
 
   const loadDashboardData = async () => {

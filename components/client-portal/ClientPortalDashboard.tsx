@@ -5,26 +5,16 @@ import { useAuth } from '@/contexts/SimpleAuthContext';
 import {
   Target,
   FileText,
-  Receipt,
   Briefcase,
-  Calendar,
   LogOut,
-  User as UserIcon,
   Mail,
   Phone,
-  Building2,
   TrendingUp,
-  Download,
-  Eye,
-  CheckCircle,
-  Clock,
-  AlertCircle,
   Loader2
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { supabase } from '@/lib/supabaseClient';
 import type { SocialMediaStrategy, Invoice, Mandat } from '@/types/database';
-import Link from 'next/link';
 
 interface User {
   id: number;
@@ -54,6 +44,7 @@ export function ClientPortalDashboard({ user }: ClientPortalDashboardProps) {
     if (user.client_id) {
       loadClientData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.client_id]);
 
   const loadClientData = async () => {
@@ -383,7 +374,7 @@ export function ClientPortalDashboard({ user }: ClientPortalDashboardProps) {
         {/* Informations de contact */}
         <Card className="p-6 mt-6 bg-gradient-to-r from-gray-50 to-gray-100">
           <h3 className="text-lg font-bold text-gray-900 mb-4">
-            Besoin d'aide ?
+            Besoin d&apos;aide ?
           </h3>
           <p className="text-gray-600 mb-4">
             Notre équipe est à votre disposition pour toute question

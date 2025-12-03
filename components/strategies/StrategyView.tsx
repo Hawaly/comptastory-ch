@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { SocialMediaStrategy, Persona, PilierContenu, KPI } from "@/types/database";

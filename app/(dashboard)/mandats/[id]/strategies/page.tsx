@@ -27,7 +27,6 @@ import {
 
 export default function MandatStrategiesPage() {
   const params = useParams();
-  const router = useRouter();
   const mandatId = params.id as string;
 
   const [mandat, setMandat] = useState<Mandat | null>(null);

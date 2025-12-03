@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { 
-  TrendingUp, 
   Target, 
   FileText, 
   Receipt, 
   Briefcase,
   Calendar,
-  Euro,
   Activity,
   Loader2
 } from 'lucide-react';
@@ -47,6 +45,7 @@ export function ClientDashboard({ clientId }: ClientDashboardProps) {
 
   useEffect(() => {
     loadStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientId]);
 
   const loadStats = async () => {
@@ -118,7 +117,7 @@ export function ClientDashboard({ clientId }: ClientDashboardProps) {
       {/* Titre */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Tableau de Bord</h2>
-        <p className="text-gray-600">Vue d'ensemble de l'activité du client</p>
+        <p className="text-gray-600">Vue d&apos;ensemble de l&apos;activité du client</p>
       </div>
 
       {/* Cartes de statistiques principales */}

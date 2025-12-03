@@ -27,7 +27,6 @@ import {
 
 export default function ClientStrategiesPage() {
   const params = useParams();
-  const router = useRouter();
   const clientId = params.id as string;
 
   const [client, setClient] = useState<Client | null>(null);

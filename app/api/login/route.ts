@@ -58,23 +58,20 @@ export async function POST(request: NextRequest) {
       // Adapter les données pour correspondre au format attendu
       if (usersJoin && usersJoin.length > 0) {
         const userData = usersJoin[0];
-        // Récupérer aussi le hash du mot de passe
-        const { data: hashData } = await supabase
-          .from('app_user')
-          .select('password_hash')
-          .eq('id', userData.id)
-          .single();
+        // Type pour les données de rôle
+        type RoleData = { code?: string; name?: string; redirect_path?: string };
+        const role = userData.role as RoleData | null;
         
         return NextResponse.json({
           success: true,
           user: {
             id: userData.id,
             email: userData.email,
-            role_code: (userData.role as any)?.code,
-            role_name: (userData.role as any)?.name,
+            role_code: role?.code,
+            role_name: role?.name,
             client_id: userData.client_id,
           },
-          redirect_path: (userData.role as any)?.redirect_path || '/dashboard'
+          redirect_path: role?.redirect_path || '/dashboard'
         });
       }
     }

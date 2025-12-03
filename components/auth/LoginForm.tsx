@@ -24,7 +24,7 @@ export function LoginForm() {
       if (!response.success) {
         setError(response.error || 'Erreur lors de la connexion');
       }
-    } catch (err) {
+    } catch {
       setError('Une erreur est survenue');
     } finally {
       setIsLoading(false);
